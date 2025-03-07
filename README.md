@@ -15,6 +15,22 @@ The steps include:
   3) Visualize the resulting files: Processing 3 (Python mode) script **Promer_style_genome_comparison_alignment_20250221**
 ... and are described in more details below.
 
+Example workflow:
+```
+cp Sulc_gffs/SMOLIH.gff .
+cp Sulc_genomes/SMOLIH.fasta .
+cat Sulc_genomes/SMP* > SMPs.fasta
+cat Sulc_gffs/SMP* > SMPs.gff
+./process_gff_20250307.py
+./process_gff_20250307.py SMOLIH.gff Sulcia_gene_categories.txt > SMOLIH.pro
+./process_gff_20250307.py SMPs.gff Sulcia_gene_categories.txt > SMPs.pro
+./visualize_genome_comparison_20250307.py
+./visualize_genome_comparison_20250307.py SMOLIH.fasta SMPs.fasta SMPs.pro SMPs_vs_SMOLIH.csv
+
+### ... and then use the resulting files SMPs_vs_SMOLIH.csv and SMPs.gff
+### ... for Processing visualization using promer_style_genome_comparison_alignment_20250221.pyde
+```
+
     
 ### process_gff_20250307.py
 This Python 3 script processes a GFF file, such as the one made by the symCAP script, to a simplified format for visualization.
