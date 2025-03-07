@@ -1,13 +1,13 @@
 add_library('pdf')
 
 ### Where output PDF should be saved
-Output_name = "/Users/piotrlukasik/Processing_stuff/20250221_Promer-style_contig_alignment_plot/SMthree.pdf"
+Output_name = "/Users/piotrlukasik/Processing_stuff/20250221_Promer-style_contig_alignment_plot/VFPs_vs_VFOLIH_evalue_1e-20.pdf"
 
 ### File with information on the Reference genome size, and coordinates of different genes, provided by the "process_gff.py" script based on a GFF
-Reference_PRO_file = "/Users/piotrlukasik/bioinfo/20250226_Genome_comparison_vis/SMDICMUL.pro"
+Reference_PRO_file = "/Users/piotrlukasik/bioinfo/20250307_Genome_comparison_vis/VFOLIH.pro"
 
 ### File with information on the coordinates/annotations of particular bases within the Query genome
-Vis_data_file = "/Users/piotrlukasik/bioinfo/20250226_Genome_comparison_vis/SMthree_vis_data.csv"
+Vis_data_file = "/Users/piotrlukasik/bioinfo/20250307_Genome_comparison_vis/VFPs_vs_VFOLIH.csv"
 
 ### How gene cotegories should be colored
 Gene_colors  = {'rRNA': [200,0,0],
@@ -16,6 +16,22 @@ Gene_colors  = {'rRNA': [200,0,0],
                 'Genetic_information_processing': [0,200,0],
                 'Other': [160,160,160]}
 Gene_category_list = Gene_colors.keys()
+
+
+size(2400, 4000)   ### drawing board width and height. Make sure to position manually the start_x and start_y positions relative to these numbers
+beginRecord(PDF, Output_name)
+background(255)
+
+###
+
+scale_x = 70    ### How many bps in a pixel
+scale_y = 350   ### How many bps in a pixel
+scale_tick = 10000
+start_x = 150
+start_y = 3750  ### Set 200 bp less than drawing board height!
+
+
+
 
 ### Function for setting FILL color, of contigs or legend
 def SelectColor(taxon, opacity):
@@ -30,17 +46,6 @@ def SelectColor2(taxon, opacity):
     return("")
 
 
-size(2400, 2800)
-beginRecord(PDF, Output_name)
-background(255)
-
-###
-
-scale_x = 70
-scale_y = 200
-scale_tick = 10000
-start_x = 150
-start_y = 2440
 
 REFERENCE = loadTable(Reference_PRO_file, "csv") 
 """
