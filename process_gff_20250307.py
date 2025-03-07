@@ -7,7 +7,7 @@ if len(sys.argv) != 3:
 	         'and the second tab-delimited file with info on assignment of genes to pre-defned categories,\n'
 	         'and returns to stdout a table to be used as an input of genome_plotting.\n'
 	         'It direct the output to STDOUT - you probably want to redirect it to a file instead.\n'
-	         'Usage: ./process_gff_20250226.py <gff_file> <categories_file>\n')
+	         'Usage: ./process_gff_20250307.py <gff_file> <categories_file>\n')
 Script, Gff_file, Categories_tsv_file = sys.argv
 
 
